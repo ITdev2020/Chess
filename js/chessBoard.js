@@ -19,8 +19,8 @@ while (j <= 8) {
         } else {
             i % 2 == 0 ? (colr = 'gray') : (colr = 'white');
         }
-
-        colorCell(colr);
+        cellIndex = String.fromCharCode(73 - i)+j;
+        cellAtr(cellIndex, colr);
 
         i++;
     }

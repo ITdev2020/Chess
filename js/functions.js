@@ -20,9 +20,10 @@ function insElem(a, querElem) {
 }
 // 
 // 
-function colorCell(colr) {
+function cellAtr(cellIndex, colr) {
     // 		console.log('inside cc, color=' + colr);
     var nthCell = document.querySelector('span:nth-child(1)');
+    nthCell.classList.add(cellIndex);
     nthCell.style.backgroundColor = colr;
 }
 // 
