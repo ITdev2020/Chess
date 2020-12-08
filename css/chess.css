@@ -1,6 +1,6 @@
 body {
 	background-color: aqua;
-	font-family: 'Roboto', sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-weight: 900;
 	font-size: 15px;
 	color: gray;
@@ -9,6 +9,7 @@ body {
 section,
 div,
 span {
+	/* outline for visual html tag testing */
 	outline: 0.5px solid red;
 	display: flex;
 	flex-wrap: wrap;
@@ -27,8 +28,9 @@ span {
 	align-content: center;
 }
 
-div span img {
-	max-height: 90%;
+div > span > img {
+	max-height: 80%;
+	filter: invert(0.2);
 }
 
 .board-index-column {
