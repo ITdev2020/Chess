@@ -4,17 +4,17 @@ var whiteColor = 0.9;
 var blackPieces = {
 	rook: {
 		source: '<img src="assets/chess-rook_outline.svg" alt="chess-rook.svg">',
-		fastPiecePosition: ".A8",
+		firstPiecePosition: ".A8",
 		secondPiecePosition: ".H8",
 	},
 	knight: {
 		source: '<img src="assets/chess-knight_outline.svg" alt="chess-knight.svg">',
-		fastPiecePosition: ".B8",
+		firstPiecePosition: ".B8",
 		secondPiecePosition: ".G8",
 	},
 	bishop: {
 		source: '<img src="assets/chess-bishop_outline.svg" alt="chess-bishop.svg">',
-		fastPiecePosition: ".C8",
+		firstPiecePosition: ".C8",
 		secondPiecePosition: ".F8",
 	},
 	queen: {
@@ -31,15 +31,17 @@ var blackPieces = {
 	},
 };
 
-const pieceName = [rook, knight, bishop, queen, king, pawn];
+const pieceName = [".rook.", ".knight.", ".bishop.", ".queen.", ".king.", ".pawn."];
 
-document.querySelector(blackPieces.rook.fastPiecePosition).innerHTML = blackPieces.rook.source;
+let queSelect = "blackPieces" + pieceName[0] + "firstPiecePosition";
+
+document.querySelector(queSelect).innerHTML = blackPieces.rook.source;
 document.querySelector(blackPieces.rook.secondPiecePosition).innerHTML = blackPieces.rook.source;
 
-document.querySelector(blackPieces.knight.fastPiecePosition).innerHTML = blackPieces.knight.source;
+document.querySelector(blackPieces.knight.firstPiecePosition).innerHTML = blackPieces.knight.source;
 document.querySelector(blackPieces.knight.secondPiecePosition).innerHTML = blackPieces.knight.source;
 
-document.querySelector(blackPieces.bishop.fastPiecePosition).innerHTML = blackPieces.bishop.source;
+document.querySelector(blackPieces.bishop.firstPiecePosition).innerHTML = blackPieces.bishop.source;
 document.querySelector(blackPieces.bishop.secondPiecePosition).innerHTML = blackPieces.bishop.source;
 
 document.querySelector(blackPieces.queen.position).innerHTML = blackPieces.queen.source;
