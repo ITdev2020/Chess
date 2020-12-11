@@ -31,28 +31,21 @@ var blackPieces = {
 	},
 };
 
-const pieceName = [".rook.", ".knight.", ".bishop.", ".queen.", ".king.", ".pawn."];
+const pn = Object.keys(blackPieces);
 
-let queSelect = "blackPieces" + pieceName[0] + "firstPiecePosition";
+for (let pi = 0; pi <= 2; pi++) {
+	let ppr = Object.keys(blackPieces[pn[pi]]);
 
-document.querySelector(queSelect).innerHTML = blackPieces.rook.source;
-document.querySelector(blackPieces.rook.secondPiecePosition).innerHTML = blackPieces.rook.source;
-
-document.querySelector(blackPieces.knight.firstPiecePosition).innerHTML = blackPieces.knight.source;
-document.querySelector(blackPieces.knight.secondPiecePosition).innerHTML = blackPieces.knight.source;
-
-document.querySelector(blackPieces.bishop.firstPiecePosition).innerHTML = blackPieces.bishop.source;
-document.querySelector(blackPieces.bishop.secondPiecePosition).innerHTML = blackPieces.bishop.source;
+	for (let j = 1; j <= 2; j++) {
+		document.querySelector(blackPieces[pn[pi]][ppr[j]]).innerHTML = blackPieces[pn[pi]]["source"];
+	}
+}
 
 document.querySelector(blackPieces.queen.position).innerHTML = blackPieces.queen.source;
-
 document.querySelector(blackPieces.king.position).innerHTML = blackPieces.king.source;
 
-for (i = 0; i < 8; i++) {
-	// let column = String.fromCharCode(65 + i);
-	// let piPawn = '<img src="assets/chess-pawn_outline.svg" alt="chess-pawn.svg">';
-	// let pawnIndex = "." + column + "7";
-	document.querySelector(blackPieces.pawn.position[i]).innerHTML = blackPieces.pawn.source;
+for (ip = 0; ip < 8; ip++) {
+	document.querySelector(blackPieces.pawn.position[ip]).innerHTML = blackPieces.pawn.source;
 }
 /*
 
@@ -60,37 +53,5 @@ for (i = 0; i < 8; i++) {
 
 
 */
-let pieces = (piecesColor) => {
-	piRook = '<img src="assets/chess-rook_outline.svg" alt="chess-rook.svg">';
-	document.querySelector(".A8").innerHTML = piRook;
-	document.querySelector(".A8>img").style.filter = "invert(" + piecesColor + ")";
-	document.querySelector(".H8").innerHTML = piRook;
-	document.querySelector(".H8>img").style.filter = "invert(" + piecesColor + ")";
-
-	piKnight = '<img src="assets/chess-knight_outline.svg" alt="chess-knight.svg">';
-	document.querySelector(".B8").innerHTML = piKnight;
-	document.querySelector(".G8").innerHTML = piKnight;
-
-	piBishop = '<img src="assets/chess-bishop_outline.svg" alt="chess-bishop.svg">';
-	document.querySelector(".C8").innerHTML = piBishop;
-	document.querySelector(".F8").innerHTML = piBishop;
-
-	piQueen = '<img src="assets/chess-queen_outline.svg" alt="chess-queen.svg">';
-	document.querySelector(".D8").innerHTML = piQueen;
-
-	piKing = '<img src="assets/chess-king_outline.svg" alt="chess-king.svg">';
-	document.querySelector(".E8").innerHTML = piKing;
-
-	for (i = 0; i < 8; i++) {
-		let column = String.fromCharCode(65 + i);
-		let piPawn = '<img src="assets/chess-pawn_outline.svg" alt="chess-pawn.svg">';
-		let pawnIndex = "." + column + "7";
-		document.querySelector(pawnIndex).innerHTML = piPawn;
-	}
-	document.querySelector(".B7>img").style.filter = "invert(" + piecesColor + ")";
-	document.querySelector(".C7>img").style.filter = "invert(" + piecesColor + ")";
-};
-
 // pieces(blackColor);
 // pieces(whiteColor);
-// arr = document.querySelector;
