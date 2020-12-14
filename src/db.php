@@ -12,9 +12,9 @@
   }
 
   /* echo "INSERT INTO `moves`(`move`) VALUES ('Kb1-c3 Bc8-a6')"; */
-  // mysqli_query($conn, "INSERT INTO moves (move) VALUES('h2-h4 Rh8-h5')");
+  mysqli_query($conn, "INSERT INTO moves (ID, move) VALUES('1', 'h2-h4 Rh8-h5')");
 
-  // /*
+  /*
   // sql to delete a record
   // $sqlDelRow = "DELETE FROM moves WHERE id=3";
   $sqlDelRow = "DELETE FROM moves";
@@ -24,7 +24,7 @@
   } else {
     echo "Error deleting record: " . $conn->error;
   }
-  // */
+  */
 
 ?>
 
@@ -37,21 +37,21 @@
   function allMoves() {
 
 
-  try {
-    // ip adres; db pavadinima; user; pass.
-    // root - vartotojo vardas, '' - slaptazodis
-    $pdo = new PDO('mysql:host=127.0.0.1; dbname=chess', 'root', 'root');
-  } catch (PDOException $e) {
-    die($e->getMessage());
-  }
+    try {
+      // ip address; db name; user; pass.
+      // root - user name, root - password
+      $pdo = new PDO('mysql:host=127.0.0.1; dbname=chess', 'root', 'root');
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    }
 
 
 
-    // 'select * from ndarbai' - sql kodas. prepare - tik paruose uzklausa (ne ivykdo)
-    $teiginys = $pdo->prepare('select * from moves');
-    $teiginys->execute();
-    // istraukti viska ir talpinti i musu "class myMoves"
-    return $teiginys->fetchAll(PDO::FETCH_CLASS, 'myMoves');
+    // 'select * from moves' - sql kod. prepare - only prepare query (not execute)
+    $prepQuery = $pdo->prepare('select * from moves');
+    $prepQuery->execute();
+    // get all and assign to "class myMoves"
+    return $prepQuery->fetchAll(PDO::FETCH_CLASS, 'myMoves');
   }
 
 
@@ -62,9 +62,6 @@
   }
 
 
-
-
-  // $namuDarbai = visosUzduotys($conn);
   $varAllMoves = allMoves();
 
 ?>
