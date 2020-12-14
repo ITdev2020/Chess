@@ -10,8 +10,13 @@
 		<link rel="stylesheet" href="css/chess.css " />
 	</head>
 	<body></body>
+
 	<script src="js/functions.js"></script>
 	<script src="js/chessBoard.js"></script>
 	<script src="js/initialPosition.js"></script>
 	<script src="js/chess.js"></script>
 </html>
+
+<?php
+include('./src/db.php');
+?>
