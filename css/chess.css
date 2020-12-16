@@ -6,9 +6,9 @@ body {
 	color: gray;
 }
 
-section,
-div,
-span {
+.board,
+.board > div,
+.board > div > span {
 	/* outline for visual html tag testing */
 	outline: 0.5px solid red;
 	display: flex;
@@ -51,6 +51,6 @@ div > span > img {
 	height: 4vw;
 }
 
-/* section>div:nth-child(even)>img {
+/* main>div:nth-child(even)>img {
     filter: invert(1);
 } */

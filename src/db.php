@@ -13,6 +13,7 @@
 
   /* echo "INSERT INTO `moves`(`move`) VALUES ('Kb1-c3 Bc8-a6')"; */
   mysqli_query($conn, "INSERT INTO moves (ID, move) VALUES('1', 'h2-h4 Rh8-h5')");
+  mysqli_query($conn, "INSERT INTO moves (ID, move) VALUES('2', 'Kb1-c3 Bc8-a6')");
 
   /*
   // sql to delete a record
@@ -36,39 +37,65 @@
   // function visosUzduotys($conn) {
   function allMoves() {
 
-
     try {
       // ip address; db name; user; pass.
       // root - user name, root - password
+      // The PHP Data Objects ( PDO ) extension defines a lightweight, consistent interface for accessing databases in PHP
       $pdo = new PDO('mysql:host=127.0.0.1; dbname=chess', 'root', 'root');
     } catch (PDOException $e) {
       die($e->getMessage());
-    }
-
-
+    };
 
     // 'select * from moves' - sql kod. prepare - only prepare query (not execute)
     $prepQuery = $pdo->prepare('select * from moves');
     $prepQuery->execute();
     // get all and assign to "class myMoves"
     return $prepQuery->fetchAll(PDO::FETCH_CLASS, 'myMoves');
-  }
-
+  };
 
   class myMoves {
     public $ID;
     public $move;
     public $date_created;
-  }
+  };
 
 
   $varAllMoves = allMoves();
+// print_r($varAllMoves);
 
+
+//
+//
+//
+echo "<aside class='movies'><div class='list'>";
+//
+//
+// $gbc = $myMoves->move;
 ?>
 
 
+<ul>
+  <?php foreach ($varAllMoves as $myMoves) : ?>
 
-<h3>Mano chess:</h3>
+    <li>
+
+      <?php
+      echo "<script>
+      document.getElementsByClassName('aside')[0].innerHTML += '" . $myMoves->ID . $myMoves->move . $myMoves->date_created . "<br>';
+      </script>";
+      ?>
+
+    </li>
+
+  <?php endforeach; ?>
+</ul>
+
+
+<?= "cia" . $varAllMoves; ?>
+
+
+
+<h3>Movies:</h3>
 <ul>
   <?php foreach ($varAllMoves as $myMoves) : ?>
     <li>
@@ -77,9 +104,10 @@
   <?php endforeach; ?>
 </ul>
 
-
 <?php
-  $conn->close();
 
+echo "</div></aside>";
+
+  $conn->close();
 
 ?>
