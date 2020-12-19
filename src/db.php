@@ -61,39 +61,29 @@
 
 
   $varAllMoves = allMoves();
-// print_r($varAllMoves);
 
 
-//
-//
-//
-echo "<aside class='movies'><div class='list'>";
-//
-//
-// $gbc = $myMoves->move;
+foreach ($varAllMoves as $myMoves) :
+
+    echo "<script>
+    document.getElementsByClassName('aside')[0].innerHTML += '" . $myMoves->ID . $myMoves->move . $myMoves->date_created . "<br>';
+    </script>";
+
+endforeach;
+
 ?>
 
-
-<ul>
-  <?php foreach ($varAllMoves as $myMoves) : ?>
-
-    <li>
-
-      <?php
-      echo "<script>
-      document.getElementsByClassName('aside')[0].innerHTML += '" . $myMoves->ID . $myMoves->move . $myMoves->date_created . "<br>';
-      </script>";
-      ?>
-
-    </li>
-
-  <?php endforeach; ?>
-</ul>
+<!--
+<?= "varAllMoves\n"; ?>
+<?php print_r ($varAllMoves); ?>
+<?php // var_dump($varAllMoves); ?>
+-->
 
 
-<?= "cia" . $varAllMoves; ?>
 
 
+
+<?php echo "<aside class='movies'><div class='list'>"; ?>
 
 <h3>Movies:</h3>
 <ul>
@@ -105,9 +95,7 @@ echo "<aside class='movies'><div class='list'>";
 </ul>
 
 <?php
-
-echo "</div></aside>";
+  echo "</div></aside>";
 
   $conn->close();
-
 ?>

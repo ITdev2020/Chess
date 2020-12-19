@@ -12,6 +12,7 @@
 	<body></body>
 
 	<script src="js/functions.js"></script>
+	<script src="js/divs.js"></script>
 	<script src="js/chessBoard.js"></script>
 	<script src="js/initialPosition.js"></script>
 	<script src="js/chess.js"></script>

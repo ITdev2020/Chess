@@ -1,36 +1,37 @@
-crSect("section", "main");
-crDiv("aside", ".main");
-crDiv("board", ".main");
-// crDiv("list", "aside");
-// board index, second row
-indRow();
-// board index, second column
-indCol();
-
 // board cell's
-var clName = "cells";
-crDiv(clName, ".board");
-var colr = "white";
-var j = 1;
-while (j <= 8) {
-	var i = 1;
+let parentClass = "cells";
+
+let j = 8;
+while (1 <= j) {
+	let i = 1;
 	while (i <= 8) {
-		crSpan(clName);
+		crSpan(parentClass);
 
 		if (j % 2 == 0) {
-			i % 2 == 0 ? (colr = "white") : (colr = "gray");
-		} else {
 			i % 2 == 0 ? (colr = "gray") : (colr = "white");
+		} else {
+			i % 2 == 0 ? (colr = "white") : (colr = "gray");
 		}
-		cellIndex = String.fromCharCode(73 - i) + j;
-		cellAtr(cellIndex, colr);
+		cellIndex = String.fromCharCode(64 + i) + j;
+
+		cellAtr(cellIndex, colr, parentClass);
 
 		i++;
 	}
-	j++;
+	j = j - 1;
 }
 
-// board index, first column
-indCol();
-// board index, first row
-indRow();
+// outside cell's
+let i = 1;
+while (i <= 16) {
+	cellIndex = "Out" + i;
+
+	parentClass = "topOutside";
+	crSpan(parentClass);
+	cellAtr(cellIndex, colr, parentClass);
+
+	parentClass = "bottomOutside";
+	crSpan(parentClass);
+	cellAtr(cellIndex, colr, parentClass);
+	i++;
+}

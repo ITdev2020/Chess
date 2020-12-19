@@ -1,3 +1,18 @@
+div {
+	/* outline for visual html tag testing */
+	outline: 0.5px solid red;
+	/* width: 100px; */
+	/* height: 100px; */
+}
+span {
+	outline: 0.5px solid green;
+}
+
+:root {
+	/* --cellSize: 40px; */
+	--cellSize: 4.5vw;
+}
+
 body {
 	background-color: aqua;
 	font-family: "Roboto", sans-serif;
@@ -6,24 +21,83 @@ body {
 	color: gray;
 }
 
-.board,
+.wrapper {
+	display: grid;
+	/* grid-template-columns: repeat(auto-fit, minmax(800px, 2fr)); */
+	grid-template-columns: max-content max-content;
+}
+
+.boardAndPieces {
+	width: calc(var(--cellSize) * 9);
+	/* height: calc(var(--cellSize) / 2); */
+}
+
+.topOutside,
+.bottomOutside {
+	width: calc(var(--cellSize) * 8);
+	height: calc(var(--cellSize) * 2);
+	background: lightgray;
+}
+
+.board-index-row-top,
+.board-index-row-bot {
+	width: calc(var(--cellSize) * 8);
+	height: calc(var(--cellSize) / 2);
+
+	margin: 0 calc(var(--cellSize) / 2);
+}
+
+.board-index-row-top > span,
+.board-index-row-bot > span {
+	height: calc(var(--cellSize) / 2);
+	width: var(--cellSize);
+	/* width: 8vw; */
+	/* height: 4vw; */
+}
+
+.board-index-col-left,
+.board-index-col-right {
+	width: calc(var(--cellSize) / 2);
+	height: calc(var(--cellSize) * 8);
+	/* display: flex; */
+	/* flex-direction: column; */
+}
+
+.board-index-col-left > span,
+.board-index-col-right > span {
+	height: var(--cellSize);
+	width: calc(var(--cellSize) / 2);
+	/* width: 4vw; */
+	/* height: 8vw; */
+}
+
+.cells {
+	width: calc(var(--cellSize) * 8);
+	height: calc(var(--cellSize) * 8);
+}
+
+/* .board,
 .board > div,
-.board > div > span {
-	/* outline for visual html tag testing */
-	outline: 0.5px solid red;
+span,
+.boardAndPieces,
+.board-index-row-top,
+.board-index-row-bot,
+.board-index-column {
 	display: flex;
 	flex-wrap: wrap;
+} */
+
+.topOutside span,
+.bottomOutside span,
+.cells span {
+	width: var(--cellSize);
+	height: var(--cellSize);
 }
-.cells {
-	width: 80vw;
-}
-.cells > span {
-	width: 10vw;
-	height: 10vw;
-}
-.cells > span,
-.board-index-column > span,
-.board-index-row > span {
+.boardAndPieces,
+.boardAndPieces div,
+.boardAndPieces span {
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
 }
@@ -33,24 +107,10 @@ div > span > img {
 	/* filter: invert(0.2); */
 }
 
-.board-index-column {
-	display: flex;
-	flex-direction: column;
-}
-
-.board-index-column > span {
-	width: 4vw;
-	height: 10vw;
-}
-
-.board-index-row {
-	margin: 0 12vw 0 4vw;
-}
-.board-index-row > span {
-	width: 10vw;
-	height: 4vw;
+.moves {
+	width: calc(var(--cellSize) * 3);
 }
 
 /* main>div:nth-child(even)>img {
-    filter: invert(1);
+	filter: invert(1);
 } */
