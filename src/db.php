@@ -34,7 +34,6 @@
 
 <?php
 
-  // function visosUzduotys($conn) {
   function allMoves() {
 
     try {
