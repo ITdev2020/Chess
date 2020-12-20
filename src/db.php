@@ -65,7 +65,7 @@
 foreach ($varAllMoves as $myMoves) :
 
     echo "<script>
-    document.getElementsByClassName('aside')[0].innerHTML += '" . $myMoves->ID . $myMoves->move . $myMoves->date_created . "<br>';
+    document.getElementsByClassName('moves')[0].innerHTML += '" . $myMoves->ID . $myMoves->move . $myMoves->date_created . "<br>';
     </script>";
 
 endforeach;
