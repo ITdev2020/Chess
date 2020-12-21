@@ -1,20 +1,17 @@
 div {
 	/* outline for visual html tag testing */
 	outline: 0.5px solid red;
-	/* width: 100px; */
-	/* height: 100px; */
 }
 span {
 	outline: 0.5px solid green;
 }
 
 :root {
-	/* --cellSize: 40px; */
 	--cellSize: 4.5vw;
 }
 
 body {
-	background-color: aqua;
+	background-color: #0008ff29;
 	font-family: "Roboto", sans-serif;
 	font-weight: 900;
 	font-size: 15px;
@@ -23,13 +20,11 @@ body {
 
 .wrapper {
 	display: grid;
-	/* grid-template-columns: repeat(auto-fit, minmax(800px, 2fr)); */
 	grid-template-columns: max-content max-content;
 }
 
 .boardAndPieces {
 	width: calc(var(--cellSize) * 9);
-	/* height: calc(var(--cellSize) / 2); */
 }
 
 .topOutside,
@@ -51,41 +46,24 @@ body {
 .board-index-row-bot > span {
 	height: calc(var(--cellSize) / 2);
 	width: var(--cellSize);
-	/* width: 8vw; */
-	/* height: 4vw; */
 }
 
 .board-index-col-left,
 .board-index-col-right {
 	width: calc(var(--cellSize) / 2);
 	height: calc(var(--cellSize) * 8);
-	/* display: flex; */
-	/* flex-direction: column; */
 }
 
 .board-index-col-left > span,
 .board-index-col-right > span {
 	height: var(--cellSize);
 	width: calc(var(--cellSize) / 2);
-	/* width: 4vw; */
-	/* height: 8vw; */
 }
 
 .cells {
 	width: calc(var(--cellSize) * 8);
 	height: calc(var(--cellSize) * 8);
 }
-
-/* .board,
-.board > div,
-span,
-.boardAndPieces,
-.board-index-row-top,
-.board-index-row-bot,
-.board-index-column {
-	display: flex;
-	flex-wrap: wrap;
-} */
 
 .topOutside span,
 .bottomOutside span,
@@ -102,15 +80,14 @@ span,
 	align-content: center;
 }
 
+.boardAndPieces > .topOutside {
+	flex-flow: wrap-reverse;
+}
+
 div > span > img {
 	max-height: 80%;
-	/* filter: invert(0.2); */
 }
 
 .moves {
 	width: calc(var(--cellSize) * 3);
 }
-
-/* main>div:nth-child(even)>img {
-	filter: invert(1);
-} */
