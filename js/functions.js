@@ -27,13 +27,11 @@ function insElem(a, queryElem) {
 function cellAtr(cellIndex, colr, parentClass) {
 	let nthCell = document.querySelector("div." + parentClass + ">span:nth-last-child(1)");
 	nthCell.id = cellIndex;
-	nthCell.setAttribute("ondrop", "drop(event)");
-	nthCell.setAttribute("ondragover", "allowDrop(event)");
 	nthCell.style.backgroundColor = colr;
 }
 //
 //
-// index
+// index Row; index Column
 function indRow(clName) {
 	crDiv(clName, ".boardAndPieces");
 	i = 1;
@@ -59,16 +57,48 @@ function indCol(clName) {
 //
 //
 //
-function allowDrop(ev) {
-	ev.preventDefault();
-}
+//
 
-function drag(ev) {
-	ev.dataTransfer.setData("text", ev.target.id);
-}
+document.addEventListener(
+	"dragstart",
+	function (event) {
+		// store a ref. on the dragged elem
+		dragged = event.target;
+	},
+	false
+);
 
-function drop(ev) {
-	ev.preventDefault();
-	var data = ev.dataTransfer.getData("text");
-	ev.target.appendChild(document.getElementById(data));
-}
+//
+//
+/* events fired on the drop targets */
+document.addEventListener(
+	"dragover",
+	function (event) {
+		// prevent default action (open as link for some elements)
+		event.preventDefault();
+	},
+	false
+);
+//
+//
+
+document.addEventListener(
+	"drop",
+	function (event) {
+		// prevent default action (open as link for some elements)
+		event.preventDefault();
+		// move dragged elem to the selected drop target (if target name is SPAN & target no have child)
+		if (event.target.nodeName == "SPAN" && event.target.childElementCount == 0) {
+			// and if target class name is "cells" or "topOutside" or "bottomOutside")
+			if (
+				event.target.parentElement.className == "cells" ||
+				event.target.parentElement.className == "topOutside" ||
+				event.target.parentElement.className == "bottomOutside"
+			) {
+				dragged.parentNode.removeChild(dragged);
+				event.target.appendChild(dragged);
+			}
+		}
+	},
+	false
+);

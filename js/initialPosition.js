@@ -88,8 +88,6 @@ function pieces(sideColor) {
 
 			let queryElem = document.querySelector(sideColor[pNames[pName]].position[i] + ">img");
 			queryElem.id = sideColor[pNames[pName]].pID[i];
-			queryElem.setAttribute("draggable", "true");
-			queryElem.setAttribute("ondragstart", "drag(event)");
 			queryElem.style.filter = "invert(" + sideColor.piColor + ")";
 			i++;
 		}
