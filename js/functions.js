@@ -102,3 +102,53 @@ document.addEventListener(
 	},
 	false
 );
+/*
+For Touch screen
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+	// this function runs when the DOM is ready, i.e. when the document has been parsed
+
+	moveable = document.querySelector(".boardAndPieces");
+	moveable.addEventListener(
+		"touchmove",
+		function (event) {
+			event.preventDefault();
+			if (event.target.nodeName == "IMG") {
+				// and if target class name is "cells" or "topOutside" or "bottomOutside")
+				if (
+					event.target.parentElement.parentElement.className == "cells" ||
+					event.target.parentElement.parentElement.className == "topOutside" ||
+					event.target.parentElement.parentElement.className == "bottomOutside"
+				) {
+					dragged = event.target;
+				}
+			}
+		},
+		{ passive: false }
+	);
+});
+//
+document.addEventListener(
+	"touchend",
+	function (ev) {
+		target = document.elementFromPoint(ev.changedTouches[0].clientX, ev.changedTouches[0].clientY);
+		if (target.nodeName == "SPAN" && target.childElementCount == 0 && typeof dragged !== "undefined") {
+			// and if target class name is "cells" or "topOutside" or "bottomOutside")
+			if (
+				target.parentElement.className == "cells" ||
+				target.parentElement.className == "topOutside" ||
+				target.parentElement.className == "bottomOutside"
+			) {
+				console.log("touchend, true");
+				dragged.parentNode.removeChild(dragged);
+				target.appendChild(dragged);
+				dragged = undefined;
+			}
+		}
+	},
+	false
+);
+
+//
+//
