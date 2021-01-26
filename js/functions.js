@@ -70,7 +70,6 @@ document.addEventListener(
 
 //
 //
-/* events fired on the drop targets */
 document.addEventListener(
 	"dragover",
 	function (event) {
@@ -82,6 +81,7 @@ document.addEventListener(
 //
 //
 
+/* events fired on the drop targets */
 document.addEventListener(
 	"drop",
 	function (event) {
