@@ -86,6 +86,7 @@ body {
 
 div > span > img {
 	max-height: 80%;
+	cursor: grab;
 }
 
 .moves {

@@ -15,6 +15,7 @@
 	<script src="js/divs.js"></script>
 	<script src="js/chessBoard.js"></script>
 	<script src="js/initialPosition.js"></script>
+	<script src="js/dragtouch.js"></script>
 	<script src="js/chess.js"></script>
 <?php
 include('./src/db.php');
