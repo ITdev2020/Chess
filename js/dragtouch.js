@@ -1,4 +1,21 @@
 /* events fired on the drop targets */
+const moveFrom = () => {
+	localStorage.setItem(event.target.id, `${event.target.id} ${event.path[1].id}`)
+}
+const moveTo = () => {
+	let timeDate = Date().split(' ')
+	let timeStamp = `${timeDate[4]} ${timeDate[2]}-${timeDate[1]}-${timeDate[3]}`
+	localStorage.setItem(dragged.id, `${localStorage[dragged.id]}=>${event.target.id} (${timeStamp})`)
+
+
+	elNode = document.createElement('li')
+	textNode = document.createTextNode(localStorage[dragged.id])
+	elNode.appendChild(textNode)
+	insElem(elNode, '.moves')
+
+	// document.querySelector('.moves').innerHTML = `<li>${localStorage[dragged.id]}</li>`
+}
+
 document.addEventListener(
 	"dragstart",
 	function (event) {
@@ -12,6 +29,9 @@ document.addEventListener(
 				// store a ref. on the dragged elem
 				dragged = event.target;
 				// console.log("dragged=" + event.target.id);
+				// localStorage.setItem(event.target.id, `${event.target.id} from ${event.path[1].id}`)
+				moveFrom()
+				// debugger
 			}
 		} else {
 			event.preventDefault();
@@ -47,7 +67,16 @@ document.addEventListener(
 			) {
 				dragged.parentNode.removeChild(dragged);
 				event.target.appendChild(dragged);
+
+				// let timeDate = Date().split(' ')
+				// let timeStamp = `${timeDate[4]} ${timeDate[2]}-${timeDate[1]}-${timeDate[3]}`
+				// localStorage.setItem(dragged.id, `${localStorage[dragged.id]} to ${event.target.id} (${timeStamp})`)
+				// document.querySelector('.moves').innerHTML = localStorage[dragged.id]
+
+				moveTo()
+
 				dragged = undefined;
+				// debugger
 			}
 		}
 	},
@@ -73,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					event.target.parentElement.parentElement.className == "bottomOutside"
 				) {
 					dragged = event.target;
+					moveFrom(event)
 				}
 			}
 		},
@@ -93,6 +123,7 @@ document.addEventListener(
 			) {
 				dragged.parentNode.removeChild(dragged);
 				target.appendChild(dragged);
+				moveTo()
 				dragged = undefined;
 			}
 		}
